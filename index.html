@@ -67,8 +67,8 @@
 
         .cloud-avatar {
             position: relative;
-            width: 160px;
-            height: 160px;
+            width: 220px; /* Aumentado para destacar más el rostro */
+            height: 220px; /* Aumentado para destacar más el rostro */
             margin: 0 auto 18px;
             display: flex;
             align-items: center;
@@ -79,10 +79,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 15%; /* Ajustado para enfocar más arriba y mostrar bien el rostro */
+            object-position: center 15%; /* Enfocado en la parte superior para mostrar bien el rostro */
             border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
-            border: 5px solid #ffffff;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            border: 6px solid #ffffff;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
             position: relative;
             z-index: 2;
             background-color: #ffffff;
@@ -99,17 +99,17 @@
         }
 
         .cloud-avatar::before {
-            width: 70px;
-            height: 70px;
-            top: 10px;
-            left: -15px;
+            width: 95px;
+            height: 95px;
+            top: 12px;
+            left: -20px;
         }
 
         .cloud-avatar::after {
-            width: 80px;
-            height: 80px;
+            width: 105px;
+            height: 105px;
             bottom: 5px;
-            right: -15px;
+            right: -20px;
         }
 
         .header-badge {
