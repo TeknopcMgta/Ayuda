@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Todos por Carmen! | Campaña de Salud</title>
+
+    <!-- METATAGS PARA PREVISTA AL ESTILO GOFUNDME EN WHATSAPP Y REDES -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="¡TODOS POR CARMEN! ❤️ Campaña de Salud">
+    <meta property="og:description" content="Apoyemos a Carmen Rebeca Maneiro (70 años) en su intervención quirúrgica de columna. ¡Cada aporte y difusión cuenta!">
+    <!-- IMPORTANTE: WhatsApp exige una URL absoluta HTTPS para mostrar la imagen de vista previa -->
+    <meta property="og:image" content="https://teknopcmgta.github.io/foto_carmen.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://teknopcmgta.github.io/">
+    <meta property="og:site_name" content="Campaña Solidaria Carmen Maneiro">
+
     <style>
         :root {
             --primary: #be123c;
@@ -53,7 +65,6 @@
             text-align: center;
         }
 
-        /* ESTILO NUBE PARA LA FOTO DE PERFIL */
         .cloud-avatar {
             position: relative;
             width: 160px;
@@ -150,7 +161,6 @@
             font-weight: 700;
         }
 
-        /* Área Pago Móvil */
         .pago-box {
             background: linear-gradient(145deg, #ffffff, #fff1f2);
             border: 2px solid #fecdd3;
@@ -235,7 +245,6 @@
             background: #15803d !important;
         }
 
-        /* Sección GoFundMe */
         .gofundme-box {
             background: linear-gradient(145deg, #ffffff, #f0fdf4);
             border: 2px solid #bbf7d0;
@@ -282,7 +291,6 @@
             background: var(--gofundme-hover);
         }
 
-        /* Informe Médico */
         .medical-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
@@ -328,7 +336,6 @@
             top: -3px;
         }
 
-        /* BOTÓN E IMÁGENES DE INFORMES MÉDICOS */
         .btn-informes {
             width: 100%;
             background: #ffffff;
@@ -391,7 +398,6 @@
             border-color: var(--accent);
         }
 
-        /* MODAL VISOR DE IMÁGENES */
         .modal-visor {
             display: none;
             position: fixed;
@@ -435,18 +441,29 @@
             justify-content: center;
         }
 
+        /* BOTÓN DE COMPARTIR PÁGINA COMPLETA EN WHATSAPP */
         .btn-share {
+            width: 100%;
             background: #25d366;
             color: white;
+            border: none;
             text-decoration: none;
             text-align: center;
-            padding: 14px 16px;
+            padding: 16px;
             border-radius: 12px;
+            font-size: 1.05rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
+            transition: background 0.2s ease;
+        }
+
+        .btn-share:hover {
+            background: #1eb954;
         }
 
         .footer-blessing {
@@ -464,7 +481,6 @@
 
     <div class="container">
         <div class="header">
-            <!-- FOTO EN NUBE -->
             <div class="cloud-avatar">
                 <img src="foto_carmen.jpg" alt="Carmen Rebeca Maneiro">
             </div>
@@ -510,7 +526,6 @@
                 </button>
             </div>
 
-            <!-- SECCIÓN GOFUNDME -->
             <div class="gofundme-box">
                 <h3>💚 Donaciones Internacionales</h3>
                 <p>Si te encuentras fuera del país, también puedes apoyarnos a través de nuestra campaña en GoFundMe:</p>
@@ -519,7 +534,6 @@
                 </a>
             </div>
 
-            <!-- RESUMEN E INFORMES MÉDICOS -->
             <div class="medical-card">
                 <h3>📋 Resumen del Cuadro Médico</h3>
                 <div class="medical-info-row">
@@ -542,7 +556,6 @@
                     <strong>Tratamiento Indicado:</strong> Tratamiento quirúrgico de Discolisis + Discoplastia y Bloqueo Neural Foraminal y Facetario Bilateral.
                 </div>
 
-                <!-- BOTÓN DESPLEGABLE DE INFORMES -->
                 <button class="btn-informes" onclick="toggleInformes()">
                     📁 <span id="btnText">Ver Informes y Comprobantes Médicos</span>
                 </button>
@@ -552,14 +565,15 @@
                     <div class="informes-grid">
                         <img src="informe_1.jpg" alt="Informe Médico 1" class="informe-thumb" onclick="abrirVisor(this.src)">
                         <img src="informe_2.jpg" alt="Informe Médico 2" class="informe-thumb" onclick="abrirVisor(this.src)">
-                        <img src="informe_2.jpg" alt="Informe Médico 3" class="informe-thumb" onclick="abrirVisor(this.src)">
-                         </div>
+                        <img src="informe_3.jpg" alt="Informe Médico 2" class="informe-thumb" onclick="abrirVisor(this.src)">
+                    </div>
                 </div>
             </div>
 
-            <a href="https://api.whatsapp.com/send?text=%C2%A1TODOS%20POR%20CARMEN%20MANEIRO!%20%E2%9D%A4%EF%B8%8F%20Apoyemos%20su%20operaci%C3%B3n%20de%20columna.%20Pago%20M%C3%B3vil%3A%20Banesco%20(0134)%20%7C%200414-7886670%20%7C%20V-5.003.643%20%7C%20Carmen%20Maneiro" target="_blank" class="btn-share">
-                💬 Compartir en WhatsApp
-            </a>
+            <!-- BOTÓN QUE COMPARTE EL ENLACE DIRECTO DE ESTA PÁGINA -->
+            <button class="btn-share" onclick="compartirPaginaWhatsApp()">
+                💬 Compartir esta página en WhatsApp
+            </button>
 
             <div class="footer-blessing">
                 "Cualquier aporte suma y compartir esta publicación nos ayuda muchísimo.<br>¡Que Dios les multiplique en salud y bendiciones! 🙌✨"
@@ -567,7 +581,6 @@
         </div>
     </div>
 
-    <!-- MODAL POPUP PARA PANTALLA COMPLETA DE FOTOS -->
     <div class="modal-visor" id="modalVisor" onclick="cerrarVisor()">
         <span class="cerrar-modal" onclick="cerrarVisor()">&times;</span>
         <img id="imgModalTarget" src="" alt="Informe Ampliado">
@@ -608,6 +621,15 @@
 
         function cerrarVisor() {
             document.getElementById('modalVisor').classList.remove('active');
+        }
+
+        // FUNCIÓN PARA COMPARTIR LA URL DE ESTA PÁGINA WEB EN WHATSAPP
+        function compartirPaginaWhatsApp() {
+            const urlActual = window.location.href;
+            const textoMensaje = `¡TODOS POR CARMEN! ❤️\n\nApoyemos a Carmen Rebeca Maneiro en su intervención quirúrgica de columna. Ingresa a la página para ver todos los detalles, informes médicos y métodos de donación:\n\n${urlActual}`;
+            
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(textoMensaje)}`;
+            window.open(whatsappUrl, '_blank');
         }
     </script>
 </body>
