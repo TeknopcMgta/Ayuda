@@ -51,6 +51,54 @@
             text-align: center;
         }
 
+        /* ESTILO NUBE PARA LA FOTO DE PERFIL */
+        .cloud-avatar {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cloud-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Silueta estilo nube recortada */
+            border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+            border: 5px solid #ffffff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Burbujas flotantes de nube decorativas */
+        .cloud-avatar::before,
+        .cloud-avatar::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(1px);
+        }
+
+        .cloud-avatar::before {
+            width: 70px;
+            height: 70px;
+            top: 10px;
+            left: -15px;
+        }
+
+        .cloud-avatar::after {
+            width: 80px;
+            height: 80px;
+            bottom: 5px;
+            right: -15px;
+        }
+
         .header-badge {
             background: rgba(255, 255, 255, 0.22);
             backdrop-filter: blur(6px);
@@ -261,6 +309,11 @@
 
     <div class="container">
         <div class="header">
+            <!-- FOTO ESTILO NUBE -->
+            <div class="cloud-avatar">
+                <img src="REMPLAZAR_CON_URL_DE_FOTO.jpg" alt="Carmen Rebeca Maneiro">
+            </div>
+
             <div class="header-badge">❤️ Campaña Solidaria</div>
             <h1>¡TODOS POR CARMEN!</h1>
             <p>Carmen Rebeca Maneiro • 70 años</p>
