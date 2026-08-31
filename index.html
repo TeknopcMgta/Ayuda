@@ -9,6 +9,8 @@
             --primary: #be123c;
             --primary-hover: #9f1239;
             --accent: #e11d48;
+            --gofundme: #02a95c;
+            --gofundme-hover: #028a4b;
             --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #f0f4f8 100%);
             --text-main: #1e293b;
             --text-muted: #64748b;
@@ -54,8 +56,8 @@
         /* ESTILO NUBE PARA LA FOTO DE PERFIL */
         .cloud-avatar {
             position: relative;
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             margin: 0 auto 18px;
             display: flex;
             align-items: center;
@@ -66,15 +68,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* Silueta estilo nube recortada */
             border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
             border: 5px solid #ffffff;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
             position: relative;
             z-index: 2;
+            background-color: #ffffff;
         }
 
-        /* Burbujas flotantes de nube decorativas */
         .cloud-avatar::before,
         .cloud-avatar::after {
             content: '';
@@ -155,7 +156,7 @@
             border: 2px solid #fecdd3;
             border-radius: 18px;
             padding: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 20px rgba(225, 29, 72, 0.06);
         }
 
@@ -234,6 +235,53 @@
             background: #15803d !important;
         }
 
+        /* Sección GoFundMe */
+        .gofundme-box {
+            background: linear-gradient(145deg, #ffffff, #f0fdf4);
+            border: 2px solid #bbf7d0;
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(2, 169, 92, 0.06);
+        }
+
+        .gofundme-box h3 {
+            color: #166534;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .gofundme-box p {
+            font-size: 0.95rem;
+            color: #374151;
+            margin-bottom: 16px;
+        }
+
+        .btn-gofundme {
+            background: var(--gofundme);
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.2s ease;
+            box-shadow: 0 4px 14px rgba(2, 169, 92, 0.25);
+        }
+
+        .btn-gofundme:hover {
+            background: var(--gofundme-hover);
+        }
+
         /* Informe Médico */
         .medical-card {
             background: #f8fafc;
@@ -280,6 +328,113 @@
             top: -3px;
         }
 
+        /* BOTÓN E IMÁGENES DE INFORMES MÉDICOS */
+        .btn-informes {
+            width: 100%;
+            background: #ffffff;
+            color: #334155;
+            border: 2px solid #cbd5e1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-informes:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+        }
+
+        .informes-container {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .informes-container.active {
+            display: block;
+        }
+
+        .informes-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .informes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+        }
+
+        .informe-thumb {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .informe-thumb:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+
+        /* MODAL VISOR DE IMÁGENES */
+        .modal-visor {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-visor.active {
+            display: flex;
+        }
+
+        .modal-visor img {
+            max-width: 95%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(255,255,255,0.2);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .btn-share {
             background: #25d366;
             color: white;
@@ -309,9 +464,9 @@
 
     <div class="container">
         <div class="header">
-            <!-- FOTO ESTILO NUBE -->
+            <!-- FOTO EN NUBE -->
             <div class="cloud-avatar">
-                <img src="REMPLAZAR_CON_URL_DE_FOTO.jpg" alt="Carmen Rebeca Maneiro">
+                <img src="foto_carmen.jpg" alt="Carmen Rebeca Maneiro">
             </div>
 
             <div class="header-badge">❤️ Campaña Solidaria</div>
@@ -355,6 +510,16 @@
                 </button>
             </div>
 
+            <!-- SECCIÓN GOFUNDME -->
+            <div class="gofundme-box">
+                <h3>💚 Donaciones Internacionales</h3>
+                <p>Si te encuentras fuera del país, también puedes apoyarnos a través de nuestra campaña en GoFundMe:</p>
+                <a href="https://gofund.me/23c9c9b19" target="_blank" rel="noopener noreferrer" class="btn-gofundme">
+                    💚 Donar en GoFundMe
+                </a>
+            </div>
+
+            <!-- RESUMEN E INFORMES MÉDICOS -->
             <div class="medical-card">
                 <h3>📋 Resumen del Cuadro Médico</h3>
                 <div class="medical-info-row">
@@ -376,6 +541,21 @@
                 <div class="medical-info-row">
                     <strong>Tratamiento Indicado:</strong> Tratamiento quirúrgico de Discolisis + Discoplastia y Bloqueo Neural Foraminal y Facetario Bilateral.
                 </div>
+
+                <!-- BOTÓN DESPLEGABLE DE INFORMES -->
+                <button class="btn-informes" onclick="toggleInformes()">
+                    📁 <span id="btnText">Ver Informes y Comprobantes Médicos</span>
+                </button>
+
+                <div class="informes-container" id="informesContainer">
+                    <p class="informes-note">Haz clic en cualquier imagen para verla en pantalla completa:</p>
+                    <div class="informes-grid">
+                        <img src="informe_1.jpg" alt="Informe Médico 1" class="informe-thumb" onclick="abrirVisor(this.src)">
+                        <img src="informe_2.jpg" alt="Informe Médico 2" class="informe-thumb" onclick="abrirVisor(this.src)">
+                        <img src="informe_2.jpg" alt="Informe Médico 3" class="informe-thumb" onclick="abrirVisor(this.src)">
+                        <img src="presupuesto_1.jpg" alt="Presupuesto Médico" class="informe-thumb" onclick="abrirVisor(this.src)">
+                    </div>
+                </div>
             </div>
 
             <a href="https://api.whatsapp.com/send?text=%C2%A1TODOS%20POR%20CARMEN%20MANEIRO!%20%E2%9D%A4%EF%B8%8F%20Apoyemos%20su%20operaci%C3%B3n%20de%20columna.%20Pago%20M%C3%B3vil%3A%20Banesco%20(0134)%20%7C%200414-7886670%20%7C%20V-5.003.643%20%7C%20Carmen%20Maneiro" target="_blank" class="btn-share">
@@ -386,6 +566,12 @@
                 "Cualquier aporte suma y compartir esta publicación nos ayuda muchísimo.<br>¡Que Dios les multiplique en salud y bendiciones! 🙌✨"
             </div>
         </div>
+    </div>
+
+    <!-- MODAL POPUP PARA PANTALLA COMPLETA DE FOTOS -->
+    <div class="modal-visor" id="modalVisor" onclick="cerrarVisor()">
+        <span class="cerrar-modal" onclick="cerrarVisor()">&times;</span>
+        <img id="imgModalTarget" src="" alt="Informe Ampliado">
     </div>
 
     <script>
@@ -400,6 +586,29 @@
                     btn.innerHTML = '📋 Copiar Datos de Pago Móvil';
                 }, 2500);
             });
+        }
+
+        function toggleInformes() {
+            const container = document.getElementById('informesContainer');
+            const btnText = document.getElementById('btnText');
+            container.classList.toggle('active');
+            
+            if (container.classList.contains('active')) {
+                btnText.textContent = "Ocultar Informes Médicos";
+            } else {
+                btnText.textContent = "Ver Informes y Comprobantes Médicos";
+            }
+        }
+
+        function abrirVisor(src) {
+            const modal = document.getElementById('modalVisor');
+            const img = document.getElementById('imgModalTarget');
+            img.src = src;
+            modal.classList.add('active');
+        }
+
+        function cerrarVisor() {
+            document.getElementById('modalVisor').classList.remove('active');
         }
     </script>
 </body>
