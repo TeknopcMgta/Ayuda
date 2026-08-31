@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Todos por Carmen! | Campaña de Salud</title>
+    <style>
+        :root {
+            --primary: #be123c;
+            --primary-hover: #9f1239;
+            --accent: #e11d48;
+            --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #f0f4f8 100%);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --border-radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, Roboto, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid rgba(225, 29, 72, 0.12);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #be123c 0%, #e11d48 100%);
+            color: white;
+            padding: 35px 25px 30px;
+            text-align: center;
+        }
+
+        .header-badge {
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(6px);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 30px 24px;
+        }
+
+        .intro-box {
+            background: #fff1f2;
+            border-left: 4px solid var(--accent);
+            padding: 18px 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 1.02rem;
+            color: #334155;
+        }
+
+        .intro-box p {
+            margin-bottom: 10px;
+        }
+
+        .highlight-red {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Área Pago Móvil */
+        .pago-box {
+            background: linear-gradient(145deg, #ffffff, #fff1f2);
+            border: 2px solid #fecdd3;
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.06);
+        }
+
+        .pago-header {
+            margin-bottom: 16px;
+            border-bottom: 1px dashed #fecdd3;
+            padding-bottom: 12px;
+        }
+
+        .pago-header h2 {
+            font-size: 1.25rem;
+            color: #9f1239;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pago-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 500px) {
+            .pago-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .pago-item {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid #ffe4e6;
+        }
+
+        .pago-item .label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .pago-item .value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .btn-copy {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(190, 18, 60, 0.28);
+        }
+
+        .btn-copy:hover {
+            background: var(--primary-hover);
+        }
+
+        .btn-copy.copied {
+            background: #15803d !important;
+        }
+
+        /* Informe Médico */
+        .medical-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 22px;
+            margin-bottom: 25px;
+        }
+
+        .medical-card h3 {
+            font-size: 1.15rem;
+            color: #1e293b;
+            margin-bottom: 14px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .medical-info-row {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .diag-list {
+            list-style: none;
+            margin-left: 4px;
+            margin-bottom: 15px;
+        }
+
+        .diag-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 6px;
+            font-size: 0.92rem;
+            color: #475569;
+        }
+
+        .diag-list li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3rem;
+            position: absolute;
+            left: 0;
+            top: -3px;
+        }
+
+        .btn-share {
+            background: #25d366;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .footer-blessing {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-top: 25px;
+            padding-top: 18px;
+            border-top: 1px solid #f1f5f9;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-badge">❤️ Campaña Solidaria</div>
+            <h1>¡TODOS POR CARMEN!</h1>
+            <p>Carmen Rebeca Maneiro • 70 años</p>
+        </div>
+
+        <div class="content">
+            <div class="intro-box">
+                <p>Hola a todos, hoy acudimos a su gran corazón para apoyar a mi mamá, <strong>Carmen Rebeca Maneiro (70 años)</strong>.</p>
+                <p>Mi mamá padece de <strong>Espondiloartrosis Lumbar Severa, Hernias Discales y Compresión Radicular</strong>.</p>
+                <p>Requiere realizarse una intervención quirúrgica de Columna <span class="highlight-red">(Discolisis + Discoplastia y Bloqueo Neural)</span>.</p>
+            </div>
+
+            <div class="pago-box">
+                <div class="pago-header">
+                    <h2>📲 Datos para Pago Móvil</h2>
+                </div>
+
+                <div class="pago-grid">
+                    <div class="pago-item">
+                        <span class="label">Banco</span>
+                        <span class="value">Banesco (0134)</span>
+                    </div>
+                    <div class="pago-item">
+                        <span class="label">Teléfono</span>
+                        <span class="value">0414-7886670</span>
+                    </div>
+                    <div class="pago-item">
+                        <span class="label">Cédula</span>
+                        <span class="value">V-5.003.643</span>
+                    </div>
+                    <div class="pago-item">
+                        <span class="label">Titular</span>
+                        <span class="value">Carmen Maneiro</span>
+                    </div>
+                </div>
+
+                <button class="btn-copy" id="copyBtn" onclick="copiarPagoMovil()">
+                    📋 Copiar Datos de Pago Móvil
+                </button>
+            </div>
+
+            <div class="medical-card">
+                <h3>📋 Resumen del Cuadro Médico</h3>
+                <div class="medical-info-row">
+                    <strong>Paciente:</strong> Carmen Rebeca Maneiro (70 años) | C.I. V-5.003.643
+                </div>
+                <div class="medical-info-row">
+                    <strong>Médico Tratante:</strong> Dr. Sixto José Urdaneta Durand (Cirugía de Columna / Traumatología)
+                </div>
+
+                <p style="margin-top:12px; font-weight:bold;">Diagnóstico Principal:</p>
+                <ul class="diag-list">
+                    <li>Espondiloartrosis Lumbar y Rotoescoliosis Lumbar.</li>
+                    <li>Enfermedad Degenerativa Multinivel Lumbo-Sacra con Deshidratación Discal.</li>
+                    <li>Hernias Discales L2/L3 y L4/L5 – L5/S1.</li>
+                    <li>Compresión Radicular Izquierda y Estenosis Foraminal.</li>
+                    <li>Espondilosis y protrusiones discales en columna cervical (C3-C7).</li>
+                </ul>
+
+                <div class="medical-info-row">
+                    <strong>Tratamiento Indicado:</strong> Tratamiento quirúrgico de Discolisis + Discoplastia y Bloqueo Neural Foraminal y Facetario Bilateral.
+                </div>
+            </div>
+
+            <a href="https://api.whatsapp.com/send?text=%C2%A1TODOS%20POR%20CARMEN%20MANEIRO!%20%E2%9D%A4%EF%B8%8F%20Apoyemos%20su%20operaci%C3%B3n%20de%20columna.%20Pago%20M%C3%B3vil%3A%20Banesco%20(0134)%20%7C%200414-7886670%20%7C%20V-5.003.643%20%7C%20Carmen%20Maneiro" target="_blank" class="btn-share">
+                💬 Compartir en WhatsApp
+            </a>
+
+            <div class="footer-blessing">
+                "Cualquier aporte suma y compartir esta publicación nos ayuda muchísimo.<br>¡Que Dios les multiplique en salud y bendiciones! 🙌✨"
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copiarPagoMovil() {
+            const datos = "BANCO: Banesco (0134)\nTELÉFONO: 04147886670\nCÉDULA: V5003643\nTITULAR: Carmen Maneiro";
+            navigator.clipboard.writeText(datos).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.classList.add('copied');
+                btn.innerHTML = '✓ ¡Datos Copiados Exitosamente!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '📋 Copiar Datos de Pago Móvil';
+                }, 2500);
+            });
+        }
+    </script>
+</body>
+</html>
